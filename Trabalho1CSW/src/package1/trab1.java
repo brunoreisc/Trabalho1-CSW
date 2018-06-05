@@ -4,7 +4,9 @@ import org.bson.Document;
 
 import com.mongodb.*;
 import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.result.DeleteResult;
 
 public class trab1 {
 
@@ -15,12 +17,24 @@ public class trab1 {
 		MongoCollection<Document> collection = database.getCollection("Collection1");
 		
 		Document person = new Document("id", 1)
-				.append("name", "mocela")
+				.append("name", "uriel")
 				.append("age", 22)
 				.append("address", new Document("line1", "heuheu")
 						.append("number", "229"));
 		
-		collection.insertOne(person);
+//		collection.insertOne(person);
+		
+		BasicDBObject query = new BasicDBObject("id", 1);
+		collection.replaceOne(query, person);
+		
+
+		MongoCursor<Document> cursor = collection.find().iterator();
+		while(cursor.hasNext()) {
+			Document obj = cursor.next();
+			System.out.println(obj.get("name"));
+		}
+		
 		mongoClient.close();
+		
 	}
 }
