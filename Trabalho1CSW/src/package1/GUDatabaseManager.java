@@ -18,15 +18,15 @@ public class GUDatabaseManager implements GUTable {
 
 	@Override
 	public void createObject(GUObject object) {
-		MongoCollection<Document> collection = database.getCollection(object.tableName);
+		MongoCollection<Document> collection = database.getCollection(object.getTableName());
 		Document doc = new Document(object.convertToDict());
 		collection.insertOne(doc);
 	}
 
 	@Override
 	public GUObject readObject(GUObject object) {
-		MongoCollection<Document> collection = database.getCollection(object.tableName);
-		BasicDBObject query = new BasicDBObject("id", object.id);
+		MongoCollection<Document> collection = database.getCollection(object.getTableName());
+		BasicDBObject query = new BasicDBObject("id", object.getId());
 		Document dict = collection.find(query).first();
 		object.setProperties(dict);
 		return object;
@@ -34,7 +34,7 @@ public class GUDatabaseManager implements GUTable {
 
 	@Override
 	public ArrayList<GUObject> readAllObjects(GUObject object) {
-		MongoCollection<Document> collection = database.getCollection(object.tableName);
+		MongoCollection<Document> collection = database.getCollection(object.getTableName());
 		MongoCursor<Document> cursor = collection.find().iterator();
 		ArrayList<GUObject> list = new ArrayList<>();
 		while(cursor.hasNext()) {
@@ -47,16 +47,16 @@ public class GUDatabaseManager implements GUTable {
 
 	@Override
 	public boolean updateObject(GUObject object) {
-		MongoCollection<Document> collection = database.getCollection(object.tableName);
-		BasicDBObject query = new BasicDBObject("id", object.id);
+		MongoCollection<Document> collection = database.getCollection(object.getTableName());
+		BasicDBObject query = new BasicDBObject("id", object.getId());
 		Document doc = new Document(object.convertToDict());
 		return collection.replaceOne(query, doc).getModifiedCount() == 1;
 	}
 
 	@Override
 	public boolean deleteObject(GUObject object) {
-		MongoCollection<Document> collection = database.getCollection(object.tableName);
-		BasicDBObject query = new BasicDBObject("id", object.id);
+		MongoCollection<Document> collection = database.getCollection(object.getTableName());
+		BasicDBObject query = new BasicDBObject("id", object.getId());
 		return collection.deleteOne(query).getDeletedCount() == 1;
 	}
 

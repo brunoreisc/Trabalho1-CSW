@@ -2,11 +2,23 @@ package package1;
 
 import java.util.Map;
 
-public interface GUObject {
+public abstract class GUObject {
 	
-	int id = 0;
-	String tableName = "";
+	private int id = 0;
+	private String tableName = "";
 	
-	public Void setProperties(Map<String, Object> dict);
-	public Map<String, Object> convertToDict();
+	public abstract void setProperties(Map<String, Object> dict);
+	public abstract Map<String, Object> convertToDict();
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getTableName() {
+		return tableName;
+	}
+	public void setTableName(String tableName) {
+		this.tableName = tableName;
+	}
 }
