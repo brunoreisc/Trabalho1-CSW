@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public interface GUTable {
 
-	public void createObject(GUObject object);
+	public boolean createObject(GUObject object);
 	public GUObject readObject(GUObject object);
 	public ArrayList<GUObject> readAllObjects(GUObject object);
 	public boolean updateObject(GUObject object);

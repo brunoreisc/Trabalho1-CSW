@@ -40,7 +40,7 @@ public class trab1 {
 		Pessoa p = new Pessoa();
 //		p.cpf = "00109430212";
 //		p.idade = 24;
-		p.nome = "jucelino cu de cheque";
+		p.nome = "Ronaldo";
 		p.setId(1);
 		p.setTableName("Pessoa");
 //		manager.createObject(p);
