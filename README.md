@@ -75,7 +75,7 @@ Após efetuar os passos anteriores sua classe está pronta para ser persistida e
 	pessoa.nome = "Ronaldo";
 	
 	//create
-  	manager.createObject(p);
+  	manager.createObject(pessoa);
     
     	//to update edit the object and call updateObject()
     	pessoa.nome = "Roberto";
@@ -88,7 +88,7 @@ Após efetuar os passos anteriores sua classe está pronta para ser persistida e
 	mesmaPessoa.setTableName("Pessoa");
     
     	//read
-	mesmaPessoa = manager.readObject(mesmaPessoa);
+	mesmaPessoa = (Pessoa) manager.readObject(mesmaPessoa);
 	
 	//delete
     	manager.deleteObject(mesmaPessoa);
