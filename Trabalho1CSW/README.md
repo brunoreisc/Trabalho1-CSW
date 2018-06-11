@@ -64,28 +64,28 @@ public class Pessoa extends GUObject {
 Após efetuar os passos anteriores sua classe está pronta para ser persistida e manipulada. A seguir um exemplo de como pode ser realizado as operações CRUD.
 
 ```
-		GUDatabaseManager manager = new GUDatabaseManager();
+	GUDatabaseManager manager = new GUDatabaseManager();
     
-		Pessoa pessoa = new Pessoa();
-    pessoa.setId(1);
-		pessoa.setTableName("Pessoa");
+	Pessoa pessoa = new Pessoa();
+    	pessoa.setId(1);
+	pessoa.setTableName("Pessoa");
 		
-    pessoa.cpf = "00109430212";
-		pessoa.idade = 24;
-		pessoa.nome = "Ronaldo";
+    	pessoa.cpf = "00109430212";
+	pessoa.idade = 24;
+	pessoa.nome = "Ronaldo";
 
   	manager.createObject(p);
     
-    pessoa.nome = "Roberto";
-		manager.updateObject(pessoa);
+    	pessoa.nome = "Roberto";
+	manager.updateObject(pessoa);
     
     
-    Pessoa mesmaPessoa = new Pessoa();
-    mesmaPessoa.setId(1);
-		mesmaPessoa.setTableName("Pessoa");
+    	Pessoa mesmaPessoa = new Pessoa();
+    	mesmaPessoa.setId(1);
+	mesmaPessoa.setTableName("Pessoa");
     
-		manager.readObject(mesmaPessoa);
-    manager.deleteObject(mesmaPessoa);
+	manager.readObject(mesmaPessoa);
+    	manager.deleteObject(mesmaPessoa);
 		
 ```
 
