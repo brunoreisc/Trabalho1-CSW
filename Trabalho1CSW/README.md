@@ -73,18 +73,24 @@ Após efetuar os passos anteriores sua classe está pronta para ser persistida e
     	pessoa.cpf = "00109430212";
 	pessoa.idade = 24;
 	pessoa.nome = "Ronaldo";
-
+	
+	//create
   	manager.createObject(p);
     
+    	//to update edit the object and call updateObject()
     	pessoa.nome = "Roberto";
+	//update
 	manager.updateObject(pessoa);
     
-    
+    	//to fetch from database you need to create a object from the respective class and then set the id you want to query
     	Pessoa mesmaPessoa = new Pessoa();
     	mesmaPessoa.setId(1);
 	mesmaPessoa.setTableName("Pessoa");
     
-	manager.readObject(mesmaPessoa);
+    	//read
+	mesmaPessoa = manager.readObject(mesmaPessoa);
+	
+	//delete
     	manager.deleteObject(mesmaPessoa);
 		
 ```
